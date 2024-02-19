@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
+import postRoutes from './routes/postRoutes.js';
 import cookieParser from 'cookie-parser';
 import errorHandler from './middleware/error.js';
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(errorHandler);
 
+app.use('/api', postRoutes);
 app.use('/api', authRoutes);
 
 

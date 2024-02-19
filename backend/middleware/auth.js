@@ -20,3 +20,9 @@ export const isAuthenticated = async (req, res, next) => {
     }
 }
 
+export const isAdmin = (req, res, next) => {
+    if (req.user.role === 'user') {
+        return next(new ErrorResponse('Access denied, you must an admin', 401));
+    }
+    next();
+}
